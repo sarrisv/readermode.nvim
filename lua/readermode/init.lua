@@ -1,16 +1,5 @@
 local M = {}
 
----@param bool? boolean
----@return nil
-function M.toggle(bool)
-	M.enabled = bool and not M.enabled or bool
-end
-
----@return nil
-function M.center()
-	vim.cmd("normal! zz")
-end
-
 ---@class ReaderModeOptions
 local defaults = {
 	enabled = false,
@@ -24,9 +13,7 @@ M.opts = {}
 ---@param opts? ReaderModeOptions
 function M.setup(opts)
 	M.opts = opts or defaults
-
-	vim.keymap.set({ "n", "i" }, M.opts.keymap, M.toggle, { desc = M.opts.desc, silent = true })
-
+	vim.keymap.set({ "n" }, M.opts.keymap, M.toggle, { desc = M.opts.desc })
 	vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI" }, {
 		group = vim.api.nvim_create_augroup("ReaderMode", { clear = true }),
 		callback = function()
@@ -35,6 +22,19 @@ function M.setup(opts)
 			end
 		end,
 	})
+end
+
+---@return nil
+function M.toggle()
+	M.opts.enabled = not M.opts.enabled
+	if M.opts.enabled == true then
+		M.center()
+	end
+end
+
+---@return nil
+function M.center()
+	vim.cmd("normal! zz")
 end
 
 return M
