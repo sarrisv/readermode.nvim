@@ -15,6 +15,7 @@ end
 local defaults = {
 	enabled = false,
 	keymap = "<leader>R",
+	desc = "Toggle Reader Mode",
 }
 
 ---@type ReaderModeOptions
@@ -24,10 +25,10 @@ M.opts = {}
 function M.setup(opts)
 	M.opts = opts or defaults
 
-	vim.keymap.set({ "n", "i" }, M.opts.keymap, M.toggle, { silent = true })
+	vim.keymap.set({ "n", "i" }, M.opts.keymap, M.toggle, { desc = M.opts.desc, silent = true })
 
-	vim.api.nvim_create_autocmd({ "CursoMoved", "CursorMovedI" }, {
-		group = vim.api.nvim_create_augroup("ReadeMode", { clear = true }),
+	vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI" }, {
+		group = vim.api.nvim_create_augroup("ReaderMode", { clear = true }),
 		callback = function()
 			if M.opts.enabled then
 				M.center()

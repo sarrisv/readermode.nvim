@@ -1,1 +1,1 @@
-require("readermode")
+require("readermode").setup()
