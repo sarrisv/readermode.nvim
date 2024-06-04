@@ -15,7 +15,7 @@ function M.setup(opts)
 	M.opts = opts or defaults
 
 	-- Define ways to toggle readermode
-	vim.api.nvim_create_user_command("ReaderMode", M.toggle(), {})
+	vim.api.nvim_create_user_command("ReaderMode", require("readermode").toggle, {})
 	vim.keymap.set({ "n" }, M.opts.keymap, M.toggle, { desc = M.opts.desc })
 
 	-- Define Autocommand w/ new Autogroup
