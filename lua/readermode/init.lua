@@ -13,7 +13,12 @@ M.opts = {}
 ---@param opts? ReaderModeOptions
 function M.setup(opts)
 	M.opts = opts or defaults
+
+	-- Define ways to toggle readermode
+	vim.api.nvim_create_user_command("ReaderMode", M.toggle(), {})
 	vim.keymap.set({ "n" }, M.opts.keymap, M.toggle, { desc = M.opts.desc })
+
+	-- Define Autocommand w/ new Autogroup
 	vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI" }, {
 		group = vim.api.nvim_create_augroup("ReaderMode", { clear = true }),
 		callback = function()
