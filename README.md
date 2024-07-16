@@ -2,7 +2,7 @@
 
 Simple neovim plugin for keeping your cursor centered while reading through code/text/whatever
 
-![readermode.gif](readermode.gif)
+https://github.com/user-attachments/assets/d9bd8a00-54cd-4264-83a8-2ad4d82d64dc
 
 ## Requirements
 
@@ -12,25 +12,25 @@ Simple neovim plugin for keeping your cursor centered while reading through code
 
 ### lazy.nvim
 
-  ```lua
-  {
-    'sarrisv/readermode.nvim',
-    opts = { --[[ Configurations Options ]] }
-  }
-  ```
+```lua
+{
+  'sarrisv/readermode.nvim',
+  opts = { --[[ Configurations Options ]] }
+}
+```
 
 ### Configuration
 
-  ```lua
-    {
-      enabled = false, -- Turned off by default
-      keymap = "<leader>R" -- Keymap used to toggle ReaderMode on/off
-    }
-  ```
+```lua
+  {
+    enabled = false, -- Turned off by default
+    keymap = "<leader>R" -- Keymap used to toggle ReaderMode on/off
+  }
+```
 
 ## Usage
 
-Toggle **ReaderMode** using `:ReaderMode` or the provided *normal mode* keymapping
+Toggle **ReaderMode** using `:ReaderMode` or the provided _normal mode_ keymapping
 
 ## Credits
 
