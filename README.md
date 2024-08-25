@@ -22,10 +22,13 @@ https://github.com/user-attachments/assets/d9bd8a00-54cd-4264-83a8-2ad4d82d64dc
 ### Configuration
 
 ```lua
-  {
-    enabled = false, -- Turned off by default
-    keymap = "<leader>R" -- Keymap used to toggle ReaderMode on/off
-  }
+{
+  enabled = false, -- Turned off by default
+  keymap = "<leader>R" -- Keymap used to toggle ReaderMode on/off
+  desc = "Toggle Reader Mode", -- Description keymap
+  allow_filetypes = {}, -- Allow to take effect in these file types
+  denied_filetypes = {}, -- Denied to take effect in these file types
+}
 ```
 
 ## Usage
