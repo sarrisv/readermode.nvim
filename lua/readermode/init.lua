@@ -51,10 +51,20 @@ function M.setup(opts)
 				end
 
 				local current_line = M.getCurrentLineNumber()
-				if current_line ~= last_line then
+				local has_line_move = current_line ~= last_line
+				if has_line_move then
 					M.center()
-				else
+
+					local mode = vim.api.nvim_get_mode().mode
+					if mode == "i" then
+						-- move cursor to the end of line on insert mode
+						local current_pos = vim.api.nvim_win_get_cursor(0)
+						local line = vim.api.nvim_get_current_line()
+						local end_pos = #line
+						vim.api.nvim_win_set_cursor(0, { current_pos[1], end_pos })
+					end
 				end
+
 				last_line = current_line
 			end
 		end,
